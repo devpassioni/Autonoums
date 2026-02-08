@@ -18,7 +18,7 @@ export class Obra{
 
 public concluir(dataTermino: Date): void{
         this.status = `CONCLUIDA`;
-        console.log(`Obra do cliente ${this.cliente} encerrada em ${dataTermino}`);
+        console.log(`Obra do cliente ${this.cliente.nome} encerrada em ${dataTermino}`);
 }
 
 
