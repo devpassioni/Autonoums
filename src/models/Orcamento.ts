@@ -1,7 +1,7 @@
 import {GeradorIDGeral } from '../utils/GeradorID'
 import {Cliente} from '../models/Cliente'
 import {Funcionario} from '../models/Funcionario'
-
+import { Obra } from './Obra'
 
 interface itemServico{
     descricao: string,
@@ -13,7 +13,7 @@ export class Orcamento{
     public itens: itemServico[] = []
     public id: number;
     public equipe: Funcionario[] = [];
-    public status: 'PENDENTE' | 'APROVADO' | 'CONCLUIDO';
+    public status: 'PENDENTE' | 'APROVADO' | 'CANCELADO';
     public margemdeLucro: number;
    
     constructor(
@@ -66,6 +66,21 @@ public CalculoGeral(): number {
     const totalServices = this.totalServicos();
     const valorFinal = totalMobEMargem + totalServices;
     return valorFinal;
+}
+public cancelarOrcamento(): void{
+        this.status = `CANCELADO`;
+}
+
+public confirmarOrcamento(): void{
+    this.status = `APROVADO`;
+}
+
+public criarObra(dataInicio: Date): Obra | null {
+    if(this.status !== `APROVADO`){
+        console.log("Erro! Orcamento precisa estar aprovado!");
+        return null;
+    }
+    return new Obra(this,dataInicio);
 }
 
 }

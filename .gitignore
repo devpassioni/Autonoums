@@ -3,13 +3,15 @@ node_modules/
 
 # Build
 dist/
+*.js
+*.js.map
 
 # Dados locais
 data/
-*.json
 
 # Ambiente
 .env
+.env.local
 
 # Logs
 *.log
@@ -17,3 +19,7 @@ data/
 # OS
 .DS_Store
 Thumbs.db
+
+# IDEs
+.vscode/
+.idea/

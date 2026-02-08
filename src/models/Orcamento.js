@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Orcamento = void 0;
 var GeradorID_1 = require("../utils/GeradorID");
+var Obra_1 = require("./Obra");
 var Orcamento = /** @class */ (function () {
     function Orcamento(nomeCliente, diasPrevistos) {
         this.nomeCliente = nomeCliente;
@@ -44,6 +45,19 @@ var Orcamento = /** @class */ (function () {
         var totalServices = this.totalServicos();
         var valorFinal = totalMobEMargem + totalServices;
         return valorFinal;
+    };
+    Orcamento.prototype.cancelarOrcamento = function () {
+        this.status = "CANCELADO";
+    };
+    Orcamento.prototype.confirmarOrcamento = function () {
+        this.status = "APROVADO";
+    };
+    Orcamento.prototype.criarObra = function (dataInicio) {
+        if (this.status !== "APROVADO") {
+            console.log("Erro! Orcamento precisa estar aprovado!");
+            return null;
+        }
+        return new Obra_1.Obra(this, dataInicio);
     };
     return Orcamento;
 }());
