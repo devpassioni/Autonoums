@@ -45,7 +45,7 @@ public removerCliente(id: number){
         return false;
     }
 
-    this.clientes.slice(index,1);
+    this.clientes.splice(index,1);
     console.log(`Cliente com ID ${id} removido com sucesso!`);
     this.sincronizar()
     return true;

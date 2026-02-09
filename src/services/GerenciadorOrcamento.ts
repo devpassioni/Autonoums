@@ -28,13 +28,30 @@ public adicionar(orcamento: Orcamento): void{
     this.sincronizar()
 }
 
-public listarPendentes(): void{
-    this.orcamentos.filter(o => o.status == `PENDENTE`);
+public listarPendentes(): Orcamento[]{
+   return this.orcamentos.filter(o => o.status == `PENDENTE`);
 }
 
-public listarEncerrados(): void{
-    this.orcamentos.filter(o => o.status === `APROVADO`);
+public listarEncerrados(): Orcamento[]{
+    return this.orcamentos.filter(o => o.status === `APROVADO`);
 }
 
+public buscarPorId(id: number): Orcamento | undefined {
+        return this.orcamentos.find(o => o.id === id);
+    }
+
+
+public listarTodos(): Orcamento[]{
+    return this.orcamentos;
+}
+
+public aprovarOrcamento(id: number): boolean {
+        const orcamento = this.buscarPorId(id);
+        if (!orcamento) return false;
+
+        orcamento.status = 'APROVADO'; // Muda o status
+        this.sincronizar(); // Salva no arquivo
+        return true;
+    }
 
 }

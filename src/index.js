@@ -29,4 +29,3 @@ console.log("Or\u00E7amento ID ".concat(orc1.id, " gerado e salvo com sucesso!")
 console.log("\n--- RESUMO ATUAL NA MEMÓRIA ---");
 console.table(servicoFunc.listarTodos());
 console.table(servicoCli.listartodos());
-console.log("\nVerifique a sua pasta '/data'. Os arquivos .json devem estar lá!");
