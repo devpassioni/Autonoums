@@ -27,7 +27,8 @@ router.delete('/funcionarios/:id', funcionarioController.delete);
 // --- ORÇAMENTOS (O Fluxo começa aqui) ---
 router.get('/orcamentos', orcamentoController.index);
 router.post('/orcamentos', orcamentoController.create);
-router.patch('/orcamentos/:id/aprovar', orcamentoController.aprovar); // Rota para aprovar!
+router.patch('/orcamentos/:id/aprovar', orcamentoController.aprovar);
+router.put('/orcamentos/:id',orcamentoController.update) // Rota para aprovar!
 
 // --- OBRAS (Depende do Orçamento Aprovado) ---
 router.get('/obras', obraController.index);

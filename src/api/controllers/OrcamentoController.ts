@@ -60,4 +60,32 @@ export class OrcamentoController {
             return res.status(500).json({ error: 'Erro ao aprovar orçamento' });
         }
     }
+
+    update = async (req: Request, res: Response)=> {
+        const { id } = req.params;
+        const dados  = req.body;
+
+        try {
+            const orcamento = gerenciador.buscarPorId(Number(id));
+            if (!orcamento) {
+                return res.status(404).json({ error: 'Orçamento não encontrado' });
+            }
+
+            // Atualiza campos permitidos
+            if (dados.equipe          !== undefined) orcamento.equipe          = dados.equipe;
+            if (dados.itens           !== undefined) orcamento.itens           = dados.itens;
+            if (dados.diasPrevistos   !== undefined) orcamento.diasPrevistos   = Number(dados.diasPrevistos);
+            if (dados.margemdeLucro   !== undefined) orcamento.margemdeLucro   = Number(dados.margemdeLucro);
+
+            gerenciador.sincronizar(); // veja nota abaixo
+            return res.json(orcamento);
+
+        } catch (error) {
+            return res.status(500).json({ error: 'Erro ao atualizar orçamento' });
+        }
+    }
+
+
+
+
 }

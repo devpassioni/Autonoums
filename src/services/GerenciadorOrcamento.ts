@@ -20,7 +20,7 @@ export class GerenciadorOrcamento{
         });
     }
 
-    private sincronizar(){
+    public sincronizar(){
         Persistencia.salvar('orcamentos.json',this.orcamentos);
     }
 public adicionar(orcamento: Orcamento): void{
