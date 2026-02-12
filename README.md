@@ -41,7 +41,7 @@ Card para cadastro de Clientes Fisicos ou Juridicos.
 * Node.js
 * TypeScript
 * Express / Fastify (ajuste conforme o framework)
-* Banco de dados (SQL/NoSQL)
+
 
 ## 🚀 Como rodar o projeto
 
