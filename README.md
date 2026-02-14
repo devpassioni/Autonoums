@@ -16,6 +16,7 @@ O projeto foi desenvolvido originalmente para minha mãe, uma empreendedora da �
 
 O desenvolvimento foi focado em **TypeScript** em ambas as pontas (Front e Back) para garantir tipagem estática, segurança no código e consistência entre camadas, utilizando **React** para uma interface reativa e moderna.
 
+O codigo contém artificios de I.A, e foi construido com auxilio para alcançar o primeiro estágio de desenvolvimento, a proposta é que Layouts, arquiteturas sejam alteradas até o encerramento do projeto.
 ---
 
 ## 📸 Screenshots
