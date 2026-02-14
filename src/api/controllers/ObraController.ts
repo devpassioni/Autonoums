@@ -4,9 +4,8 @@ import { GerenciadorOrcamento } from '../../services/GerenciadorOrcamento';
 import { Obra } from '../../models/Obra';
 
 // Instanciamos os dois serviços necessários
-const obrasService = new GerenciarObras();
-const orcamentosService = new GerenciadorOrcamento(); 
-
+//const obrasService = new GerenciarObras();
+import { obrasService, orcamentosService } from '../../services/instances';
 export class ObraController {
 
     // LISTAR (GET)
@@ -57,4 +56,21 @@ export class ObraController {
             return res.status(500).json({ error: 'Erro ao criar obra' });
         }
     }
+
+    async remove(req: Request, res: Response) {
+    const { id } = req.params; 
+    try {
+        const removido = obrasService.removerPorIdOrcamento(Number(id));
+        if (!removido) return res.status(404).json({ error: 'Obra não encontrada' });
+        return res.status(204).send();
+    } catch (error) {
+        return res.status(500).json({ error: 'Erro ao remover obra' });
+    }
+}
+
+
+
+
+
+
 }

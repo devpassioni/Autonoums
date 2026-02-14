@@ -3,8 +3,8 @@ import { GerenciadorFuncionarios } from '../../services/GerenciadorFuncionarios'
 import { Funcionario } from '../../models/Funcionario';
 
 // Instanciamos fora da classe para carregar o JSON apenas uma vez (Singleton)
-const gerenciador = new GerenciadorFuncionarios();
-
+//const gerenciador = new GerenciadorFuncionarios();
+import { funcionariosService as gerenciador } from '../../services/instances';
 export class FuncionarioController {
 
     // GET /funcionarios

@@ -34,4 +34,12 @@ public listarObrasEncerradas(): Obra[] {
     return this.obras.filter(o => o.status === `CONCLUIDA`);
 }
 
+public removerPorIdOrcamento(idOrcamento: number): boolean {
+    const index = this.obras.findIndex(o => o.orcamento.id === idOrcamento);
+    if (index === -1) return false;
+    this.obras.splice(index, 1);
+    this.sincronizar();
+    return true;
+}
+
 }

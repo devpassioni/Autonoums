@@ -99,13 +99,6 @@ export default function Orcamentos({ onCriarObra }: { onCriarObra?: (orc: Orcame
   // ── atualizar (PUT /orcamentos/:id) ───────────────────────────
   const atualizar = async (patch: Partial<Orcamento>) => {
     if (!selecionado) return;
-
-    console.log("--- DEBUG DO PUT ---");
-    console.log("ID do Selecionado:", selecionado.id);
-    console.log("Tipo do ID:", typeof selecionado.id);
-    console.log("URL que vai ser chamada:", `${API_URL}/orcamentos/${selecionado.id}`);
-    console.log("Dados que estão indo (Body):", patch);
-    
     const atualizado = { ...selecionado, ...patch };
     setSalvando(true);
     try {
@@ -217,6 +210,15 @@ export default function Orcamentos({ onCriarObra }: { onCriarObra?: (orc: Orcame
                     <span style={{ ...s.badge, ...STATUS[orc.status] }}>{orc.status}</span>
                   </div>
                   <p style={s.listaItemSub}>#{orc.id} · {orc.diasPrevistos} dias previstos</p>
+
+                  {orc.status === 'APROVADO' && (
+                    <button
+                      style={s.btnCriarObra}
+                      onClick={e => { e.stopPropagation(); onCriarObra?.(orc); }}
+                    >
+                      Criar Obra →
+                    </button>
+                  )}
                 </div>
               ))
             }
@@ -245,9 +247,9 @@ export default function Orcamentos({ onCriarObra }: { onCriarObra?: (orc: Orcame
                       </button>
                     )}
                     {selecionado.status === 'APROVADO' && (
-                      <button style={s.btnObra} onClick={() => onCriarObra?.(selecionado)}>
-                        Criar Obra
-                      </button>
+                      <span style={{ fontSize: '0.78rem', color: '#16a34a', background: '#dcfce7', border: '1px solid #bbf7d0', padding: '4px 10px', borderRadius: '20px', fontWeight: 600 }}>
+                        Use o card na lista para criar a obra
+                      </span>
                     )}
                     <button style={s.btnPdf} onClick={() => gerarPdfOrcamento(selecionado)}>
                       Exportar PDF
@@ -391,6 +393,7 @@ const s: Record<string, React.CSSProperties> = {
   listaItemHeader: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' },
   listaItemNome: { fontWeight: 700, fontSize: '0.92rem', color: '#1a1a2e', flex: 1, marginRight: '8px' },
   listaItemSub: { fontSize: '0.78rem', color: '#9ca3af', margin: 0 },
+  btnCriarObra: { marginTop: '10px', width: '100%', background: '#6c63ff', color: '#fff', border: 'none', borderRadius: '8px', padding: '7px 12px', fontSize: '0.8rem', fontWeight: 700, cursor: 'pointer', letterSpacing: '0.02em', boxShadow: '0 2px 8px rgba(108,99,255,.3)' },
   badge:      { display: 'inline-block', padding: '3px 9px', borderRadius: '20px', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.04em', whiteSpace: 'nowrap' as const },
 
   detalhe:    { minHeight: '400px' },

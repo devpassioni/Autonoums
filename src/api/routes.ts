@@ -33,5 +33,5 @@ router.put('/orcamentos/:id',orcamentoController.update) // Rota para aprovar!
 // --- OBRAS (Depende do Orçamento Aprovado) ---
 router.get('/obras', obraController.index);
 router.post('/obras', obraController.create);
-
+router.delete('/obras/:id', obraController.remove);
 export { router };

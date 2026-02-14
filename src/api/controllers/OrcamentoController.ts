@@ -3,8 +3,8 @@ import { GerenciadorOrcamento } from '../../services/GerenciadorOrcamento';
 import { Orcamento } from '../../models/Orcamento';
 
 // Instância única do serviço
-const gerenciador = new GerenciadorOrcamento();
-
+//const gerenciador = new GerenciadorOrcamento();
+import { orcamentosService as gerenciador } from '../../services/instances';
 export class OrcamentoController {
 
     // GET /orcamentos
