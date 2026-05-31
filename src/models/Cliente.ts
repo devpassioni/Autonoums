@@ -1,14 +1,8 @@
-import {GeradorIDGeral} from '../utils/GeradorID'
-type tipo = "Pessoa Juridica" | "Pessoa Fisica";
-export class Cliente{
-    public id: number;
-    constructor(
-        public nome: string,
-        public telefone: string,
-        public endereco: string,
-        public tipo: tipo
-    ){
-        this.id = GeradorIDGeral.Gcliente();
-    }
 
+export interface Clientes {
+    id?: number,
+    name: string,
+    phone_number: string,
+    address: string,
+    type_of: "PF"| "PJ",
 }
